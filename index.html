@@ -8,14 +8,45 @@
 </head>
 <body>
   <main class="container">
-    <h1>Task Tracker</h1>
+    <header class="header">
+      <h1>Task Tracker</h1>
+      <button id="clear-done" class="secondary" type="button">Clear completed</button>
+    </header>
+
     <form id="task-form">
       <input id="task-input" type="text" placeholder="Add a new task..." required>
+      <select id="priority-input" aria-label="Priority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <input id="due-input" type="date" aria-label="Due date">
       <button type="submit">Add</button>
     </form>
+
+    <div class="toolbar">
+      <input id="search-input" type="search" placeholder="Search tasks...">
+      <div class="filters" role="tablist">
+        <button class="filter active" data-filter="all" type="button">All</button>
+        <button class="filter" data-filter="active" type="button">Active</button>
+        <button class="filter" data-filter="done" type="button">Done</button>
+      </div>
+      <select id="sort-input" aria-label="Sort by">
+        <option value="created">Newest first</option>
+        <option value="priority">Priority</option>
+        <option value="due">Due date</option>
+      </select>
+    </div>
+
     <ul id="task-list"></ul>
-    <p id="summary"></p>
+    <p id="empty-state" class="empty" hidden>No tasks here yet.</p>
+
+    <footer class="footer">
+      <p id="summary"></p>
+      <div class="progress"><div id="progress-bar"></div></div>
+    </footer>
   </main>
+  <script src="utils.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
